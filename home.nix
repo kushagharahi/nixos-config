@@ -14,21 +14,6 @@
     };
   };
 
-  
-  wayland.windowManager.hyprland = {
-    enable = true;
-    systemd.enable = false;
-
-    settings = {
-      "$mod" = "SUPER";
-      bind =
-        [
-          "$mod, Q, exec, kitty"
-          "$mod, F, exec, firefox"
-        ];
-    };
-  };
-
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium.fhs;
