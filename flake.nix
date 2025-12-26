@@ -21,7 +21,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.kusha = import ./home-manager.nix;
+          home-manager.users.kusha = import ./home.nix;
         }
       ];
     };
