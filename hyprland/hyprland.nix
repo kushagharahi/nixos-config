@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   gtk = {
@@ -11,13 +12,31 @@
     };
   };
 
+  home.sessionVariables = {
+    HYPRCURSOR_THEME = "rose-pine-hyprcursor";
+    HYPRCURSOR_SIZE = 24;
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.rose-pine-cursor; # Note: use the XCursor version for GTK
+    name = "BreezX-RosePine-Linux";
+    size = 24;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     # Use the same flake package as configuration.nix
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
     settings = {
+      env = [
+        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+        "HYPRCURSOR_SIZE,24"
+      ];
       "exec-once" = [
+        "hyprctl setcursor rose-pine-hyprcursor 24"
         "udiskie &"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -185,5 +204,6 @@
     wl-clipboard
     cliphist
     udiskie
+    rose-pine-hyprcursor
   ];
 }
