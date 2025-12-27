@@ -11,6 +11,7 @@
       "steam"
       "steam-original"
       "steam-unwrapped"
+      "steam-run"
     ];
 
   # List your packages here
@@ -21,9 +22,14 @@
       alejandra
       spotify
       discord
-      steam
-      wireguard-ui # The UI tool
-      wireguard-tools # The CLI tools required for the UI to function
+      gnomeExtensions.wireguard-vpn-extension
     ];
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = false; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 }
