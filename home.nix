@@ -53,10 +53,4 @@
       };
     };
   };
-
-  # You can add more user-level packages here
-  home.packages = with pkgs; [
-    nixd # The "Smart" Language Server (LSP)
-    alejandra # The best/fastest formatter for Nix
-  ];
 }
