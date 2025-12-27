@@ -23,6 +23,7 @@
       spotify
       discord
       gnomeExtensions.wireguard-vpn-extension
+      kitty
     ];
   };
 
