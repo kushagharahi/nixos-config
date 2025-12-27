@@ -26,7 +26,11 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    # No extra priority or ignore settings here. Let the defaults work.
+    settings.main.rc-manager = "resolvconf";
+  };
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
