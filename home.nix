@@ -16,9 +16,11 @@
 
   programs.git = {
     enable = true;
-    userName = "kushagharahi";
-    userEmail = "3326002+kushagharahi@users.noreply.github.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "kushagharahi";
+        email = "3326002+kushagharahi@users.noreply.github.com";
+      };
       init.defaultBranch = "main";
       safe.directory = "/home/kusha/nixos-config";
     };
@@ -28,25 +30,26 @@
     enable = true;
     package = pkgs.vscodium.fhs;
 
-    # These extensions will be auto-installed
-    extensions = with pkgs.vscode-extensions; [
-      jnoortheen.nix-ide # The main Nix support
-    ];
-
     # This replaces manually editing settings.json
-    userSettings = {
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nixd";
-      "nix.formatterPath" = "alejandra";
-      "editor.formatOnSave" = true;
+    profiles.default = {
+      # These extensions will be auto-installed
+      extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide # The main Nix support
+      ];
+      userSettings = {
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nixd";
+        "nix.formatterPath" = "alejandra";
+        "editor.formatOnSave" = true;
 
-      # Tell nixd where your flake is for better autocomplete
-      "nix.serverSettings" = {
-        "nixd" = {
-          "formatting" = {"command" = ["alejandra"];};
-          "options" = {
-            "nixos" = {
-              "expr" = "(builtins.getFlake \"/home/kusha/nixos-config\").nixosConfigurations.nixos.options";
+        # Tell nixd where your flake is for better autocomplete
+        "nix.serverSettings" = {
+          "nixd" = {
+            "formatting" = {"command" = ["alejandra"];};
+            "options" = {
+              "nixos" = {
+                "expr" = "(builtins.getFlake \"/home/kusha/nixos-config\").nixosConfigurations.nixos.options";
+              };
             };
           };
         };
