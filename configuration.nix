@@ -55,6 +55,8 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  # Disable all the core utilities
+  services.gnome.core-utilities.enable = false;
 
   # Configure keymap in X11
   services.xserver.xkb = {
