@@ -28,7 +28,6 @@
   # Enable networking
   networking.networkmanager = {
     enable = true;
-    # No extra priority or ignore settings here. Let the defaults work.
     settings.main.rc-manager = "resolvconf";
   };
 
