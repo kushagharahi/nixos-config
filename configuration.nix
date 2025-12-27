@@ -53,12 +53,12 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
   # Disable all the core utilities
   services.gnome.core-apps.enable = false;
 
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.gvfs.enable = true; # For mounting USB drives/trash in file manager
   programs.hyprland = {
     enable = true;
     # Use the package from the flake input
