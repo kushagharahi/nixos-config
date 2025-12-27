@@ -13,7 +13,7 @@
   ];
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = ["amdgpu"];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
@@ -38,9 +38,9 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [mangohud];
+    extraPackages32 = with pkgs; [mangohud];
   };
 
-  hardware.opengl = {
-    enable = true;
-  };
+  services.xserver.videoDrivers = ["amdgpu"];
 }
