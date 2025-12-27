@@ -56,4 +56,22 @@
       };
     };
   };
+
+  programs.mangohud = {
+    enable = true;
+    # This replaces the need for MANGOHUD_CONFIG in Steam launch options
+    settings = {
+      # Disable the GameMode text detection
+      gamemode = 0;
+
+      # Aesthetics
+      legacy_layout = false;
+      gpu_stats = true;
+      cpu_stats = true;
+      ram = true;
+      vram = true;
+      fps = true;
+      frame_timing = false;
+    };
+  };
 }
