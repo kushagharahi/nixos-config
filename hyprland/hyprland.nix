@@ -3,6 +3,14 @@
   inputs,
   ...
 }: {
+  gtk = {
+    enable = true;
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     # Use the same flake package as configuration.nix
