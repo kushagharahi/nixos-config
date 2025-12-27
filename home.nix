@@ -1,9 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   # Home Manager needs this to know what version it's managing
   home.stateVersion = "25.11";
 
   imports = [
     ./dconf.nix
+    ./hyprland/hyprland.nix
   ];
 
   programs.bash = {

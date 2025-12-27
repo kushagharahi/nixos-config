@@ -1,0 +1,65 @@
+* {
+    border: none;
+    font-family: "JetBrainsMono Nerd Font Mono", "Symbols Nerd Font Mono";
+    font-weight: bold;
+    font-size: 14px;
+}
+
+window#waybar {
+    background: transparent;
+    /* Makes the bar float */
+}
+
+/* Targets every module inside the right, left, and center containers */
+.modules-left>widget>*,
+.modules-center>widget>*,
+.modules-right>widget>* {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border: 1px solid #313244;
+    padding: 4px 16px;
+    margin: 5px 4px;
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #fab387;
+}
+
+#workspaces button.active {
+    color: #89b4fa;
+}
+
+/* Specific module colors to make it look "GNOME-plus" */
+#clock {
+    color: #cba6f7;
+}
+
+/* Peach/Orange for CPU */
+#temperature {
+    color: #fab387;
+}
+
+/* Blue for GPU */
+#custom-gpu-temp {
+    color: #89b4fa;
+}
+
+#pulseaudio {
+    color: #89b4fa;
+}
+
+#custom-notification {
+    color: #f9e2af;
+    padding-right: 20px;
+}
+
+#network {
+    color: #89dceb;
+}
+
+#tray {
+    min-width: 16px;
+}

@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -57,6 +58,19 @@
   services.desktopManager.gnome.enable = true;
   # Disable all the core utilities
   services.gnome.core-apps.enable = false;
+
+  programs.hyprland = {
+    enable = true;
+    # Use the package from the flake input
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+
+  fonts.packages = with pkgs; [
+    # This is the modern way to pick specific nerdfonts
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only # Great fallback for icons
+  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {

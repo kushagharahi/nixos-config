@@ -8,6 +8,8 @@
     # This pulls Home Manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {
@@ -19,13 +21,14 @@
     # Replace 'nixos' with your actual hostname (usually 'nixos')
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs;}; # This passes inputs to your modules
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {inherit inputs;};
           home-manager.users.kusha = import ./home.nix;
         }
       ];
