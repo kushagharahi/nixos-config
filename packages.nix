@@ -24,6 +24,7 @@
       discord
       gnomeExtensions.wireguard-vpn-extension
       kitty
+      ente-auth
     ];
   };
 
