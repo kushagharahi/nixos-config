@@ -10,6 +10,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland.url = "github:hyprwm/Hyprland";
+    #ashell.url = "github:MalpenZibo/ashell";
+    ashell.url = "path:/home/kusha/ashell";
   };
 
   outputs = {

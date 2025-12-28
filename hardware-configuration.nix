@@ -42,6 +42,10 @@
     extraPackages32 = with pkgs; [mangohud];
   };
 
+  hardware.bluetooth.enable = true; # enables the bluez service
+  hardware.bluetooth.powerOnBoot = true; # powers up the default controller on boot
+  services.blueman.enable = true; # provides the GUI and tray applet
+
   services.xserver.videoDrivers = ["amdgpu"];
 
   fileSystems."/mnt/storage" = {

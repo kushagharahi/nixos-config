@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  lib,
   ...
 }: {
   gtk = {
@@ -35,24 +34,6 @@
     config.common.default = "*";
   };
 
-  systemd.user.services.ashell = {
-    Unit = {
-      Description = "ashell bar";
-      # Only start once the Wayland session is actually ready
-      After = ["graphical-session.target"];
-      PartOf = ["graphical-session.target"];
-    };
-    Service = {
-      # Use the absolute path from the package
-      ExecStart = "${pkgs.ashell}/bin/ashell";
-      Restart = "on-failure";
-      RestartSec = "2s";
-    };
-    Install = {
-      WantedBy = ["graphical-session.target"];
-    };
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     # Use the same flake package as configuration.nix
@@ -61,6 +42,7 @@
     settings = {
       "exec-once" = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "${inputs.ashell.packages.${pkgs.system}.default}/bin/ashell"
         "swaync"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
@@ -73,6 +55,10 @@
         "$mod, SPACE, exec, rofi -show drun"
         # mod v - Show copy history in rofi
         "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+        # Screenshots
+        "$mod SHIFT, S, exec, hyprshot -m window"
+        "$mod, R, exec, hyprshot -m region"
+        "$mod SHIFT, R, exec, hyprshot -m region --clipboard-only"
         # --- Move Windows (Swap window positions) ---
         "$mod SHIFT, left, movewindow, l"
         "$mod SHIFT, right, movewindow, r"
@@ -99,20 +85,22 @@
 
   xdg.configFile."ashell/config.toml".text = ''
     log_level = "warn"
-    outputs = { Targets = ["eDP-1"] }
+    outputs = { Targets = ["DP-1"] }
     position = "Top"
-    app_launcher_cmd = "walker"
 
     [modules]
     left = [ [ "Workspaces" ] ]
     center = [ "WindowTitle" ]
-    right = [ "SystemInfo", ["Clock", "media_player", "Privacy", "Settings",  "Tray" ] ]
+    right = [ "SystemInfo", ["Clock", "media_player", "Privacy", "Settings", "Tray" ] ]
 
     [workspaces]
     enable_workspace_filling = true
 
     [window_title]
     truncate_title_after_length = 100
+
+    [system_info]
+    indicators = ["Cpu", "Memory", "Temperature", "UploadSpeed", "DownloadSpeed"]
 
     [settings]
     lock_cmd = "playerctl --all-players pause; nixGL hyprlock &"
@@ -164,13 +152,14 @@
   };
 
   home.packages = with pkgs; [
+    inputs.ashell.packages.${pkgs.system}.default
     swaynotificationcenter #notifications
     pavucontrol # volume control
     rofi # applauncher
-    ashell # status bar
     wl-clipboard
     cliphist
     rose-pine-hyprcursor
     blueberry
+    hyprshot #screenshots
   ];
 }
