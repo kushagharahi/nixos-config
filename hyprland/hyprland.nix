@@ -8,18 +8,18 @@
   ];
 
   # Global Catppuccin Setting
-  catppuccin.flavor = "mocha";
-  catppuccin.enable = true;
-
-  catppuccin.cursors = {
+  catppuccin = {
     enable = true;
     flavor = "mocha";
-    accent = "dark";
+    cursors = {
+      enable = true;
+      flavor = "mocha";
+      accent = "dark";
+    };
   };
 
   gtk = {
     enable = true;
-    catppuccin.cursor.enable = true;
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
@@ -48,7 +48,15 @@
     };
   };
 
+  home.pointerCursor = {
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
   home.sessionVariables = {
+    HYPRCURSOR_SIZE = 24;
+    XCURSOR_SIZE = 24;
     GDK_BACKEND = "wayland";
     MOZ_ENABLE_WAYLAND = "1";
     XDG_CURRENT_DESKTOP = "Hyprland";

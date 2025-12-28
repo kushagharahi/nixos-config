@@ -58,13 +58,23 @@
   services.gnome.core-apps.enable = false;
 
   # Enable login screen
-  catppuccin.flavor = "mocha";
-  catppuccin.enable = true;
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    cursors = {
+      enable = true;
+      flavor = "mocha";
+      accent = "dark";
+    };
+    sddm = {
+      enable = true;
+      background = ./wallpapers/login.png;
+    };
+  };
 
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    catppuccin.enable = true; # Automatically applies Mocha to SDDM
   };
 
   # Enable gnome keyring
