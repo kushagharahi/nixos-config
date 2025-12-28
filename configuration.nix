@@ -51,12 +51,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Disable all the core utilities
-  services.gnome.core-apps.enable = false;
-
   # Enable login screen
   catppuccin = {
     enable = true;
@@ -71,6 +65,32 @@
       background = ./wallpapers/login.png;
     };
   };
+
+  fonts = {
+    packages = with pkgs; [
+      inter
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.symbols-only # Great fallback for icons
+    ];
+    fontconfig = {
+      subpixel = {
+        rgba = "rgb";
+      };
+    };
+  };
+
+  programs.hyprland = {
+    enable = true;
+    # Use the package from the flake input
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # Disable all the core utilities
+  services.gnome.core-apps.enable = false;
 
   services.displayManager.sddm = {
     enable = true;
@@ -87,24 +107,6 @@
 
   services.gvfs.enable = true; # For mounting USB drives/trash in file manager
   services.udisks2.enable = true; # Mounting other drives
-
-  programs.hyprland = {
-    enable = true;
-    # Use the package from the flake input
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
-  fonts.packages = with pkgs; [
-    inter
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.symbols-only # Great fallback for icons
-  ];
-  fonts.fontconfig = {
-    subpixel = {
-      rgba = "rgb";
-    };
-  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
