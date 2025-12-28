@@ -64,13 +64,13 @@
   };
 
   home.packages = with pkgs; [
-    inputs.ashell.packages.${pkgs.system}.default
+    inputs.ashell.packages.${pkgs.system}.default # top bar
     swaynotificationcenter #notifications
     pavucontrol # volume control
     rofi # applauncher
     wl-clipboard # copy paste engine
     cliphist # clipboard manager
-    rose-pine-hyprcursor
+    rose-pine-hyprcursor # cursor theme
     hyprshot #screenshots
     swaybg # wallpaper management
   ];
