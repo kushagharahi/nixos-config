@@ -9,6 +9,19 @@
       name = "adw-gtk3-dark";
       package = pkgs.adw-gtk3;
     };
+    font = {
+      name = "Inter";
+      size = 12;
+    };
+  };
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      serif = ["Inter"];
+      sansSerif = ["Inter"];
+      monospace = ["JetBrainsMono Nerd Font"];
+    };
   };
 
   home.sessionVariables = {

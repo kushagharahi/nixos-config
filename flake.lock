@@ -40,8 +40,8 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 0,
-        "narHash": "sha256-IxWWklJDwGvwY4mnl8T61AYeH1tn44c2ewyZ6hcEzKs=",
+        "lastModified": 1766938835,
+        "narHash": "sha256-Gg4RcrAcWDn7oivC3Fi/4cLyl5fUM6wtRQwLjGCkDoY=",
         "path": "/home/kusha/ashell",
         "type": "path"
       },
@@ -199,11 +199,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1766870612,
-        "narHash": "sha256-k0JGpkHZb5s/msskYKcYLwGuPklJW8qWN1vIhBZARyI=",
+        "lastModified": 1766929444,
+        "narHash": "sha256-mGk+mk/miObjivy+6qMqQm+Jyl8R7t6B/1SaiBkUUyY=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "a8452705d6512da36f66e4a7d6e7799afbc7ffdd",
+        "rev": "6a055fc747a5a899b97f9b4c1d1a52229a805b1e",
         "type": "github"
       },
       "original": {
