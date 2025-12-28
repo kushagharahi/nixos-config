@@ -18,6 +18,12 @@
     XCURSOR_SIZE = 24;
     GDK_BACKEND = "wayland";
     MOZ_ENABLE_WAYLAND = "1";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    # Force apps to look for the tray
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+    # Fix for Electron apps (Discord/Spotify)
+    NIXOS_OZONE_WL = "1";
   };
 
   home.pointerCursor = {
