@@ -85,7 +85,6 @@
 
   xdg.configFile."ashell/config.toml".text = ''
     log_level = "warn"
-    outputs = { Targets = ["DP-1"] }
     position = "Top"
 
     [modules]
@@ -101,6 +100,9 @@
 
     [system_info]
     indicators = ["Cpu", "Memory", "Temperature", "UploadSpeed", "DownloadSpeed"]
+
+    [system_info.temperature]
+    sensor = "amdgpu edge"
 
     [settings]
     lock_cmd = "playerctl --all-players pause; nixGL hyprlock &"
