@@ -76,7 +76,6 @@
 
   fonts.packages = with pkgs; [
     inter
-    # This is the modern way to pick specific nerdfonts
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only # Great fallback for icons
   ];

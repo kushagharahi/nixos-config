@@ -7,7 +7,6 @@
   home.stateVersion = "25.11";
 
   imports = [
-    ./dconf.nix
     ./hyprland/hyprland.nix
   ];
 
@@ -45,6 +44,8 @@
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
         "nix.formatterPath" = "alejandra";
+        "editor.wordWrap" = "on";
+        "editor.fontFamily" = "JetBrainsMonoNL Nerd Font Mono";
         "editor.formatOnSave" = true;
 
         # Tell nixd where your flake is for better autocomplete

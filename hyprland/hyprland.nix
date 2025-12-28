@@ -9,9 +9,22 @@
       name = "adw-gtk3-dark";
       package = pkgs.adw-gtk3;
     };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
     font = {
       name = "Inter";
       size = 12;
+    };
+  };
+
+  # Also set the "prefer-dark" hint for modern Libadwaita/GTK4 apps
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
     };
   };
 
