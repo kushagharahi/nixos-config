@@ -11,6 +11,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./packages.nix
+    inputs.catppuccin.nixosModules.catppuccin
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -57,8 +58,14 @@
   services.gnome.core-apps.enable = false;
 
   # Enable login screen
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  catppuccin.flavor = "mocha";
+  catppuccin.enable = true;
+
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    catppuccin.enable = true; # Automatically applies Mocha to SDDM
+  };
 
   # Enable gnome keyring
   services.gnome.gnome-keyring.enable = true;

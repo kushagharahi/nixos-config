@@ -32,3 +32,4 @@ todo:
 - better login screen
 - sunshine install for remote play
 - secure boot
+- night light

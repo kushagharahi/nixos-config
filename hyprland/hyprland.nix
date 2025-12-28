@@ -3,12 +3,23 @@
   inputs,
   ...
 }: {
+  imports = [
+    inputs.catppuccin.homeModules.catppuccin
+  ];
+
+  # Global Catppuccin Setting
+  catppuccin.flavor = "mocha";
+  catppuccin.enable = true;
+
+  catppuccin.cursors = {
+    enable = true;
+    flavor = "mocha";
+    accent = "dark";
+  };
+
   gtk = {
     enable = true;
-    theme = {
-      name = "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
-    };
+    catppuccin.cursor.enable = true;
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
@@ -38,10 +49,6 @@
   };
 
   home.sessionVariables = {
-    HYPRCURSOR_THEME = "rose-pine-hyprcursor";
-    HYPRCURSOR_SIZE = 24;
-    XCURSOR_THEME = "BreezX-RosePine-Linux";
-    XCURSOR_SIZE = 24;
     GDK_BACKEND = "wayland";
     MOZ_ENABLE_WAYLAND = "1";
     XDG_CURRENT_DESKTOP = "Hyprland";
@@ -50,14 +57,6 @@
     _JAVA_AWT_WM_NONREPARENTING = "1";
     # Fix for Electron apps (Discord/Spotify)
     NIXOS_OZONE_WL = "1";
-  };
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.rose-pine-cursor; # Note: use the XCursor version for GTK
-    name = "BreezeX-RosePine-Linux";
-    size = 24;
   };
 
   xdg.portal = {
@@ -78,7 +77,6 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi;
-    theme = "android_notification";
     extraConfig = {
       modi = "run,drun,window";
       icon-theme = "Oranchelo";
@@ -95,6 +93,21 @@
     };
   };
 
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 11;
+    };
+    settings = {
+      scrollback_lines = 10000;
+    };
+    extraConfig = ''
+      # Any raw kitty.conf text goes here
+      background_opacity 0.9
+    '';
+  };
+
   home.packages = with pkgs; [
     inputs.ashell.packages.${pkgs.system}.default # top bar
     swaynotificationcenter #notifications
@@ -102,7 +115,6 @@
     rofi # applauncher
     wl-clipboard # copy paste engine
     cliphist # clipboard manager
-    rose-pine-hyprcursor # cursor theme
     hyprshot #screenshots
     swaybg # wallpaper management
   ];
