@@ -73,5 +73,6 @@
     rose-pine-hyprcursor
     blueberry
     hyprshot #screenshots
+    swaybg # wallpaper management
   ];
 }
