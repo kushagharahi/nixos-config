@@ -38,49 +38,7 @@
     enable = true;
     # Use the same flake package as configuration.nix
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-
-    settings = {
-      "exec-once" = [
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "${inputs.ashell.packages.${pkgs.system}.default}/bin/ashell"
-        "swaync"
-        "wl-paste --type text --watch cliphist store"
-        "wl-paste --type image --watch cliphist store"
-      ];
-      "$mod" = "SUPER";
-      bind = [
-        "$mod, Q, exec, kitty"
-        "$mod, M, exit"
-        # mod space - app launcher
-        "$mod, SPACE, exec, rofi -show drun"
-        # mod v - Show copy history in rofi
-        "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-        # Screenshots
-        "$mod SHIFT, S, exec, hyprshot -m window"
-        "$mod, R, exec, hyprshot -m region"
-        "$mod SHIFT, R, exec, hyprshot -m region --clipboard-only"
-        # --- Move Windows (Swap window positions) ---
-        "$mod SHIFT, left, movewindow, l"
-        "$mod SHIFT, right, movewindow, r"
-        "$mod SHIFT, up, movewindow, u"
-        "$mod SHIFT, down, movewindow, d"
-        # --- Move Focus (Switch active window) ---
-        "$mod, left, movefocus, l"
-        "$mod, right, movefocus, r"
-        "$mod, up, movefocus, u"
-        "$mod, down, movefocus, d"
-      ];
-
-      monitor = [
-        # Right Monitor (DP-1): 1440p, Landscape
-        # Positioned at X=2160 (width of rotated 4K) and Y=1200 (centered vertically)
-        "DP-1, 2560x1440@165, 2160x1200, 1"
-
-        # Left Monitor (DP-2): 4K, Portrait Right, positioned at 0,0
-        # transform 3 = 270 degrees (Portrait Right)
-        "DP-2, 3840x2160@60, 0x0, 1, transform, 1"
-      ];
-    };
+    extraConfig = builtins.readFile ./hyprland.conf;
   };
 
   xdg.configFile."ashell/config.toml".text = ''
