@@ -12,6 +12,9 @@ enable_workspace_filling = true
 [window_title]
 truncate_title_after_length = 100
 
+[clock]
+format = "%a %d %b %r"
+
 [system_info]
 indicators = ["Cpu", "Memory", "Temperature", "UploadSpeed", "DownloadSpeed"]
 
