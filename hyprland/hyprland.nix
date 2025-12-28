@@ -15,14 +15,42 @@
   home.sessionVariables = {
     HYPRCURSOR_THEME = "rose-pine-hyprcursor";
     HYPRCURSOR_SIZE = 24;
+    XCURSOR_THEME = "BreezX-RosePine-Linux";
+    XCURSOR_SIZE = 24;
+    GDK_BACKEND = "wayland";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
     package = pkgs.rose-pine-cursor; # Note: use the XCursor version for GTK
-    name = "BreezX-RosePine-Linux";
+    name = "BreezeX-RosePine-Linux";
     size = 24;
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    config.common.default = "*";
+  };
+
+  systemd.user.services.ashell = {
+    Unit = {
+      Description = "ashell bar";
+      # Only start once the Wayland session is actually ready
+      After = ["graphical-session.target"];
+      PartOf = ["graphical-session.target"];
+    };
+    Service = {
+      # Use the absolute path from the package
+      ExecStart = "${pkgs.ashell}/bin/ashell";
+      Restart = "on-failure";
+      RestartSec = "2s";
+    };
+    Install = {
+      WantedBy = ["graphical-session.target"];
+    };
   };
 
   wayland.windowManager.hyprland = {
@@ -31,15 +59,8 @@
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
     settings = {
-      env = [
-        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
-        "HYPRCURSOR_SIZE,24"
-      ];
       "exec-once" = [
-        "hyprctl setcursor rose-pine-hyprcursor 24"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "waybar"
         "swaync"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
@@ -76,104 +97,51 @@
     };
   };
 
-  programs.waybar = {
-    enable = true;
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "top";
-        # Added output here so it shows only on the main monitor
-        output = ["DP-1"];
+  xdg.configFile."ashell/config.toml".text = ''
+    log_level = "warn"
+    outputs = { Targets = ["eDP-1"] }
+    position = "Top"
+    app_launcher_cmd = "walker"
 
-        modules-left = ["hyprland/workspaces"];
-        modules-center = ["clock"];
-        modules-right = ["cpu" "memory" "pulseaudio" "temperature" "custom/gpu-temp" "network" "custom/notification" "tray"];
+    [modules]
+    left = [ [ "Workspaces" ] ]
+    center = [ "WindowTitle" ]
+    right = [ "SystemInfo", ["Clock", "media_player", "Privacy", "Settings",  "Tray" ] ]
 
-        "hyprland/workspaces" = {
-          format = "{icon}";
-          on-click = "activate";
-          format-icons = {
-            "default" = "○";
-            "active" = "●";
-            "urgent" = "!";
-          };
-        };
+    [workspaces]
+    enable_workspace_filling = true
 
-        "clock" = {
-          interval = 1; # REQUIRED for seconds to tick
-          format = "{:%I:%M:%S %p}";
-          on-click = "gnome-calendar";
-        };
+    [window_title]
+    truncate_title_after_length = 100
 
-        "temperature" = {
-          "hwmon-path" = "/sys/class/hwmon/hwmon4/temp1_input";
-          "critical-threshold" = 80;
-          "format" = "{temperatureC}°C ";
-          "interval" = 2; # This forces it to run every 2 seconds
-        };
+    [settings]
+    lock_cmd = "playerctl --all-players pause; nixGL hyprlock &"
+    audio_sinks_more_cmd = "pavucontrol -t 3"
+    audio_sources_more_cmd = "pavucontrol -t 4"
+    wifi_more_cmd = "nm-connection-editor"
+    vpn_more_cmd = "nm-connection-editor"
+    bluetooth_more_cmd = "blueberry"
 
-        "custom/gpu-temp" = {
-          "exec" = "cat /sys/class/hwmon/hwmon1/temp1_input | awk '{print $1/1000}'";
-          "interval" = 2;
-          "format" = "{}°C 󰢮";
-        };
+    [appearance]
+    style = "Islands"
+    primary_color = "#7aa2f7"
+    success_color = "#9ece6a"
+    text_color = "#a9b1d6"
+    workspace_colors = [ "#7aa2f7", "#9ece6a" ]
+    special_workspace_colors = [ "#7aa2f7", "#9ece6a" ]
 
-        "pulseaudio" = {
-          format = "{volume}% {icon}";
-          format-bluetooth = "{volume}% {icon}󰂰";
-          format-muted = "󰝟";
-          format-icons = {
-            "headphone" = "";
-            "hands-free" = "󱡒";
-            "headset" = "󰋎";
-            "phone" = "";
-            "portable" = "";
-            "car" = "";
-            "default" = ["" ""];
-          };
-          on-click = "pavucontrol";
-          # Scroll up/down on the bar to change volume
-          "on-scroll-up" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-          "on-scroll-down" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-          "smooth-scrolling-threshold" = 1;
-        };
+    [appearance.danger_color]
+    base = "#f7768e"
+    weak = "#e0af68"
 
-        "custom/notification" = {
-          "tooltip" = false;
-          "format" = "{icon}";
-          "format-icons" = {
-            "notification" = "<span foreground='red'><sup></sup></span>";
-            "none" = "";
-            "dnd-notification" = "<span foreground='red'><sup></sup></span>";
-            "dnd-none" = "";
-          };
-          "return-type" = "json";
-          "exec-if" = "which swaync-client";
-          "exec" = "swaync-client -swb";
-          "on-click" = "swaync-client -t -sw"; # Toggle and Stay Windowed
-          "on-click-right" = "swaync-client -C"; # Clear notifications
-          "escape" = true;
-        };
+    [appearance.background_color]
+    base = "#1a1b26"
+    weak = "#24273a"
+    strong = "#414868"
 
-        "network" = {
-          format-wifi = "{essid} ";
-          format-ethernet = "󰈀";
-          format-disconnected = "⚠";
-          on-click = "nm-connection-editor";
-        };
-
-        "cpu" = {
-          format = "{usage}% ";
-        };
-
-        "memory" = {
-          format = "{}% ";
-        };
-      };
-    };
-
-    style = builtins.readFile ./waybar.css;
-  };
+    [appearance.secondary_color]
+    base = "#0c0d14"
+  '';
 
   programs.rofi = {
     enable = true;
@@ -199,9 +167,10 @@
     swaynotificationcenter #notifications
     pavucontrol # volume control
     rofi # applauncher
-    waybar # The most popular status bar for Hyprland
+    ashell # status bar
     wl-clipboard
     cliphist
     rose-pine-hyprcursor
+    blueberry
   ];
 }
