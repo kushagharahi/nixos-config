@@ -27,3 +27,8 @@ for elden ring, starts hidden right shift + f12 starts it
 ```
 MANGOHUD=1 MANGOHUD_DLSYM=1 MANGOHUD_CONFIG="no_display=1" %command%
 ``` 
+
+todo:
+- better login screen
+- sunshine install for remote play
+- secure boot

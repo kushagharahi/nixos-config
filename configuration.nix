@@ -56,10 +56,17 @@
   # Disable all the core utilities
   services.gnome.core-apps.enable = false;
 
+  # Enable login screen
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
+
+  # Enable gnome keyring
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+
   services.gvfs.enable = true; # For mounting USB drives/trash in file manager
-  services.udisks2.enable = true;
+  services.udisks2.enable = true; # Mounting other drives
+
   programs.hyprland = {
     enable = true;
     # Use the package from the flake input
