@@ -121,6 +121,18 @@
     '';
   };
 
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      background = [
+        {
+          path = "$HOME/nixos-config/wallpapers/login.png";
+          blur_passes = 2;
+        }
+      ];
+    };
+  };
+
   home.packages = with pkgs; [
     inputs.ashell.packages.${pkgs.system}.default # top bar
     swaynotificationcenter #notifications
@@ -130,5 +142,6 @@
     cliphist # clipboard manager
     hyprshot #screenshots
     swaybg # wallpaper management
+    hyprlock # lock screen
   ];
 }
