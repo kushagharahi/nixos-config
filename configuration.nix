@@ -77,6 +77,10 @@
     wayland.enable = true;
   };
 
+  # Enable UPower for battery/brightness and Power Profiles for performance modes
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
+
   # Enable gnome keyring
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
