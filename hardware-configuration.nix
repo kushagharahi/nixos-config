@@ -43,4 +43,19 @@
   };
 
   services.xserver.videoDrivers = ["amdgpu"];
+
+  fileSystems."/mnt/storage" = {
+    device = "/dev/disk/by-uuid/1892489E9248826C";
+    fsType = "ntfs3";
+    options = [
+      "nofail"
+      "uid=1000"
+      "gid=100"
+      "rw"
+      "user"
+      "exec" # Explicitly allow executing binaries (critical for Steam)
+      "umask=000" # Simplest way to give full access; or use dmask=000,fmask=000
+      "windows_names" # Prevents creating files with names Windows doesn't like
+    ];
+  };
 }

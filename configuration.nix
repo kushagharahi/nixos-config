@@ -60,17 +60,6 @@
   services.displayManager.sddm.wayland.enable = true;
   services.gvfs.enable = true; # For mounting USB drives/trash in file manager
   services.udisks2.enable = true;
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if ((action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
-           action.id == "org.freedesktop.udisks2.filesystem-mount") &&
-          subject.isInGroup("users")) {
-        return polkit.Result.YES;
-      }
-    });
-  '';
-  # This gives the 'udisks2' service the actual tool it needs to mount NTFS
-  boot.supportedFilesystems = ["ntfs"];
   programs.hyprland = {
     enable = true;
     # Use the package from the flake input
@@ -131,7 +120,6 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
     git
-    ntfs3g
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

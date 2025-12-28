@@ -37,7 +37,6 @@
       ];
       "exec-once" = [
         "hyprctl setcursor rose-pine-hyprcursor 24"
-        "udiskie &"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "waybar"
@@ -203,7 +202,6 @@
     waybar # The most popular status bar for Hyprland
     wl-clipboard
     cliphist
-    udiskie
     rose-pine-hyprcursor
   ];
 }
