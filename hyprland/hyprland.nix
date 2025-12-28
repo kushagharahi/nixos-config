@@ -68,10 +68,9 @@
     swaynotificationcenter #notifications
     pavucontrol # volume control
     rofi # applauncher
-    wl-clipboard
-    cliphist
+    wl-clipboard # copy paste engine
+    cliphist # clipboard manager
     rose-pine-hyprcursor
-    blueberry
     hyprshot #screenshots
     swaybg # wallpaper management
   ];
