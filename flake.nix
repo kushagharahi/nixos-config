@@ -9,6 +9,11 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "github:hyprwm/Hyprland";
     #ashell.url = "github:MalpenZibo/ashell";
     ashell.url = "path:/home/kusha/ashell";
@@ -19,6 +24,7 @@
     self,
     nixpkgs,
     home-manager,
+    lanzaboote,
     ...
   } @ inputs: {
     # Replace 'nixos' with your actual hostname (usually 'nixos')
@@ -34,6 +40,8 @@
           home-manager.extraSpecialArgs = {inherit inputs;};
           home-manager.users.kusha = import ./home.nix;
         }
+        lanzaboote.nixosModules.lanzaboote
+        ./modules/lanza.nix
       ];
     };
   };

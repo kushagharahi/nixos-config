@@ -1,9 +1,11 @@
 ## NixOS
 
+Must do Lanzaboote setup for secure boot: https://nix-community.github.io/lanzaboote/introduction.html
+
 Build after config change
 
 ```bash
-sudo nixos-rebuild switch --flake
+sudo nixos-rebuild switch --flake .
 ```
 
 Clear out old NixOS generations
