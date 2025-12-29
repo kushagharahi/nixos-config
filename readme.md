@@ -30,5 +30,16 @@ for elden ring, starts hidden right shift + f12 starts it
 MANGOHUD=1 MANGOHUD_DLSYM=1 MANGOHUD_CONFIG="no_display=1" %command%
 ``` 
 
+starting and stopping sunshine is via systemd
+```bash
+systemctl --user start sunshine
+```
+```bash
+systemctl --user stop sunshine
+```
+
 todo:
-- sunshine install for remote play
+- notes sync with fastmail
+- faster/more targeted builds
+- secret management
+- idling

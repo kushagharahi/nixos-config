@@ -26,6 +26,7 @@
       kitty
       ente-auth
       gimp
+      sunshine
     ];
   };
 
@@ -37,5 +38,12 @@
     extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
+  };
+
+  services.sunshine = {
+    enable = true;
+    autoStart = false;
+    capSysAdmin = true; # Necessary for mouse/keyboard emulation
+    openFirewall = true; # Opens 47984-47990, 48010, etc.
   };
 }
