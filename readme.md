@@ -42,7 +42,6 @@ todo:
 - notes sync with fastmail
 - faster/more targeted builds
 - secret management
-- idling
 - move to modules?
 - file manager gui
 - fish like autocomplete and syntax highlighting
