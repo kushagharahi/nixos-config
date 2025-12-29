@@ -17,6 +17,9 @@
       flavor = "mocha";
       accent = "dark";
     };
+    hyprlock = {
+      useDefaultConfig = false;
+    };
   };
 
   gtk = {
@@ -125,14 +128,10 @@
 
   programs.hyprlock = {
     enable = true;
-    settings = {
-      background = [
-        {
-          path = "$HOME/nixos-config/wallpapers/login.png";
-          blur_passes = 2;
-        }
-      ];
-    };
+
+    extraConfig = ''
+      source = ${./hyprlock.conf}
+    '';
   };
 
   services.hypridle = {
