@@ -44,3 +44,5 @@ todo:
 - secret management
 - idling
 - move to modules?
+- file manager gui
+- fish like autocomplete and syntax highlighting

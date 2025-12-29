@@ -66,7 +66,7 @@
     _JAVA_AWT_WM_NONREPARENTING = "1";
     # Fix for Electron apps (Discord/Spotify)
     NIXOS_OZONE_WL = "1";
-    HYPRSHOT_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
+    HYPRSHOT_DIR = "${config.home.homeDirectory}/pictures/screenshots";
   };
 
   xdg.portal = {
