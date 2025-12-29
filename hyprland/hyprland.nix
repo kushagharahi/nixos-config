@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: {
   imports = [
@@ -65,6 +66,7 @@
     _JAVA_AWT_WM_NONREPARENTING = "1";
     # Fix for Electron apps (Discord/Spotify)
     NIXOS_OZONE_WL = "1";
+    HYPRSHOT_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
   };
 
   xdg.portal = {
