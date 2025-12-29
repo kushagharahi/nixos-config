@@ -8,6 +8,11 @@ Build after config change
 sudo nixos-rebuild switch --flake .
 ```
 
+Update flake lock
+```bash
+nix flake update
+```
+
 Clear out old NixOS generations
 ```bash
 sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +1

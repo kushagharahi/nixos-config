@@ -174,5 +174,6 @@
     hyprlock # lock screen
     hyprsunset # night shift
     brightnessctl # brightness
+    networkmanagerapplet # gui for network management
   ];
 }
