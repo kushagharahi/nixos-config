@@ -143,5 +143,6 @@
     hyprshot #screenshots
     swaybg # wallpaper management
     hyprlock # lock screen
+    hyprsunset # night shift
   ];
 }

@@ -32,5 +32,3 @@ MANGOHUD=1 MANGOHUD_DLSYM=1 MANGOHUD_CONFIG="no_display=1" %command%
 
 todo:
 - sunshine install for remote play
-- secure boot
-- night light
