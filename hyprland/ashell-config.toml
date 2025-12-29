@@ -4,7 +4,7 @@ position = "Top"
 [modules]
 left = [ [ "Workspaces" ] ]
 center = [ "WindowTitle" ]
-right = [ "SystemInfo", ["Clock", "media_player", "Privacy", "Settings", "Tray" ] ]
+right = [ "MediaPlayer", "SystemInfo", "Clock", ["Privacy", "Settings", "Tray" ] ]
 
 [workspaces]
 enable_workspace_filling = true
@@ -14,6 +14,9 @@ truncate_title_after_length = 100
 
 [clock]
 format = "%a %d %b %r"
+
+[media_player]
+max_title_length = 50
 
 [system_info]
 indicators = ["Cpu", "Memory", "Temperature", "UploadSpeed", "DownloadSpeed"]
