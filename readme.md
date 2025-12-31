@@ -50,3 +50,4 @@ todo:
 - move to modules?
 - file manager gui
 - fish like autocomplete and syntax highlighting
+- weather widget
