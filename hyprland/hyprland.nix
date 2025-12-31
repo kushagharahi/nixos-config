@@ -138,6 +138,8 @@
     enable = true;
     settings = {
       general = {
+        # Lock before the system actually goes to sleep
+        before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid dpms issues after wakeup
         ignore_dbus_inhibit = false; # whether to ignore dbus-sent idle-inhibit requests (used by e.g. firefox or steam)
         lock_cmd = "pidof hyprlock || hyprlock"; # avoid starting multiple hyprlock instances
