@@ -27,6 +27,7 @@
       ente-auth
       gimp
       sunshine
+      prusa-slicer
     ];
   };
 
