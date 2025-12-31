@@ -43,7 +43,7 @@
   };
 
   hardware.bluetooth.enable = true; # enables the bluez service
-  hardware.bluetooth.powerOnBoot = true; # powers up the default controller on boot
+  hardware.bluetooth.powerOnBoot = false; # powers up the default controller on boot
   services.blueman.enable = true; # provides the GUI and tray applet
 
   services.xserver.videoDrivers = ["amdgpu"];
