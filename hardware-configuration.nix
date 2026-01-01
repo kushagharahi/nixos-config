@@ -46,7 +46,7 @@
   hardware.bluetooth.powerOnBoot = false; # powers up the default controller on boot
   services.blueman.enable = true; # provides the GUI and tray applet
 
-  # resolve home lab stuff
+  # resolve home lab stuff with local DNS
   services.resolved = {
     enable = true;
     extraConfig = ''
