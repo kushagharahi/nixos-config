@@ -46,6 +46,16 @@
   hardware.bluetooth.powerOnBoot = false; # powers up the default controller on boot
   services.blueman.enable = true; # provides the GUI and tray applet
 
+  # resolve home lab stuff
+  services.resolved = {
+    enable = true;
+    extraConfig = ''
+      [Resolve]
+      DNS=192.168.1.241
+      Domains=kusha.me
+    '';
+  };
+
   # brlaser is the most reliable modern driver for Brother HL-2070N series
   services.printing.drivers = [pkgs.brlaser];
 
