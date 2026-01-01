@@ -51,3 +51,4 @@ todo:
 - file manager gui
 - fish like autocomplete and syntax highlighting
 - weather widget
+- bump CUPs so printing works again: github.com/nixos/nixpkgs/issues/473491

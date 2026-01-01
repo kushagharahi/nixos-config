@@ -46,6 +46,22 @@
   hardware.bluetooth.powerOnBoot = false; # powers up the default controller on boot
   services.blueman.enable = true; # provides the GUI and tray applet
 
+  # brlaser is the most reliable modern driver for Brother HL-2070N series
+  services.printing.drivers = [pkgs.brlaser];
+
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "Brother_HL-2070N";
+        location = "Local Printer";
+        # Use 'socket' for the most reliable connection
+        deviceUri = "socket://192.168.1.56:9100";
+        model = "drv:///brlaser.drv/br2140.ppd";
+        description = "Brother HL-2070N (Static IP)";
+      }
+    ];
+  };
+
   services.xserver.videoDrivers = ["amdgpu"];
 
   fileSystems."/mnt/storage" = {
