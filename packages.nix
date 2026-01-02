@@ -28,6 +28,7 @@
       gimp
       sunshine
       prusa-slicer
+      signal-desktop
     ];
   };
 
