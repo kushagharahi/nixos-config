@@ -52,3 +52,7 @@ todo:
 - fish like autocomplete and syntax highlighting
 - weather widget
 - bump CUPs so printing works again: github.com/nixos/nixpkgs/issues/473491
+- sunshine improvements
+  - virtual monitor with native resolution
+  - prevent screenlock while sunshine has an active connection
+  
