@@ -55,4 +55,7 @@ todo:
 - sunshine improvements
   - virtual monitor with native resolution
   - prevent screenlock while sunshine has an active connection
-  
+
+- convert pi1 pihole to nix
+- convert pi3 mainsail/klipper to nix
+- convert x86 k3s debian box to nix
