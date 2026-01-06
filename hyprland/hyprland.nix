@@ -104,6 +104,17 @@
       display-window = " 󰕰  Window ";
       sidebar-mode = true;
     };
+    theme = let
+      inherit (config.lib.formats.rasi) mkLiteral;
+    in {
+      "window" = {
+        border-radius = mkLiteral "10px";
+        border = mkLiteral "2px";
+      };
+      "element" = {
+        border-radius = mkLiteral "10px";
+      };
+    };
   };
 
   programs.kitty = {
