@@ -55,6 +55,7 @@ todo:
 - sunshine improvements
   - virtual monitor with native resolution
   - prevent screenlock while sunshine has an active connection
+- dota needed: `xrandr --output DP-1 --primary` figure out why
 
 - convert pi1 pihole to nix
 - convert pi3 mainsail/klipper to nix
