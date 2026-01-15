@@ -19,6 +19,7 @@
     # This MUST be an attribute set, not just a list
     home.packages = with pkgs; [
       nixd
+      unzip
       alejandra
       spotify
       discord
