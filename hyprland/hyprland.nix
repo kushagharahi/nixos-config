@@ -174,16 +174,19 @@
     };
   };
 
+  services.swaync = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
+    # Applications without a Home Manager module
     inputs.ashell.packages.${pkgs.system}.default # top bar
-    swaynotificationcenter #notifications
     pavucontrol # volume control
     rofi # applauncher
     wl-clipboard # copy paste engine
     cliphist # clipboard manager
     hyprshot #screenshots
     swaybg # wallpaper management
-    hyprlock # lock screen
     hyprsunset # night shift
     brightnessctl # brightness
     networkmanagerapplet # gui for network management
