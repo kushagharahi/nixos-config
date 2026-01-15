@@ -24,10 +24,8 @@
       spotify
       discord
       gnomeExtensions.wireguard-vpn-extension
-      kitty
       ente-auth
       gimp
-      sunshine
       prusa-slicer
       signal-desktop
     ];
