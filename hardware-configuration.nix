@@ -7,7 +7,19 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}: let
+  # smb mount opts variable
+  smbOptions = [
+    "credentials=/home/kusha/nixos-config/secrets/netdisk-secret"
+    "uid=1000"
+    "gid=100"
+    "rw"
+    "vers=3.0"
+    "x-systemd.automount" # This makes it "lazy load" like Windows
+    "noauto"
+    "x-systemd.idle-timeout=60" # Unmounts when not in use to save resources
+  ];
+in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -54,6 +66,30 @@
       DNS=192.168.1.241
       Domains=kusha.me
     '';
+  };
+  # Mount homelab smb
+  fileSystems."/mnt/netdisk/home" = {
+    device = "//192.168.1.23/home";
+    fsType = "cifs";
+    options = smbOptions;
+  };
+
+  fileSystems."/mnt/netdisk/media" = {
+    device = "//192.168.1.23/Media";
+    fsType = "cifs";
+    options = smbOptions;
+  };
+
+  fileSystems."/mnt/netdisk/docker" = {
+    device = "//192.168.1.23/docker";
+    fsType = "cifs";
+    options = smbOptions;
+  };
+
+  fileSystems."/mnt/netdisk/photos" = {
+    device = "//192.168.1.23/photo-frame";
+    fsType = "cifs";
+    options = smbOptions;
   };
 
   # brlaser is the most reliable modern driver for Brother HL-2070N series

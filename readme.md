@@ -2,6 +2,17 @@
 
 Must do Lanzaboote setup for secure boot: https://nix-community.github.io/lanzaboote/introduction.html
 
+This folder expects to be in `/home/kusha/nixos-config`
+
+## Secrets
+
+Create a folder called `secrets/`
+add `netdisk-secret`
+```
+username=user
+password=pass
+```
+
 Build after config change
 
 ```bash
@@ -55,6 +66,9 @@ todo:
 - sunshine improvements
   - virtual monitor with native resolution
   - prevent screenlock while sunshine has an active connection
+- variablize the config location
+
+maybe:
 - dota needed: `xrandr --output DP-1 --primary` figure out why
   - also keep losing audio
 
