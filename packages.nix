@@ -28,6 +28,7 @@
       gimp
       prusa-slicer
       signal-desktop
+      kubectl
     ];
   };
 
