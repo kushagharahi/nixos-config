@@ -16,7 +16,7 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
     #ashell.url = "github:MalpenZibo/ashell";
-    ashell.url = "path:/home/kusha/ashell";
+    ashell.url = "path:/home/kusha/projects/ashell";
     catppuccin.url = "github:catppuccin/nix";
   };
 
