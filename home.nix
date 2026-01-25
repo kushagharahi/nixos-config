@@ -27,6 +27,8 @@
       };
       init.defaultBranch = "main";
       safe.directory = "/home/kusha/nixos-config";
+      # This ensures that 'git pull' uses rebase instead of creating a merge commit
+      pull.rebase = true;
     };
   };
 
