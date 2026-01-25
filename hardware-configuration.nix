@@ -121,7 +121,7 @@ in {
       "user"
       "exec" # Explicitly allow executing binaries (critical for Steam)
       "umask=000" # Simplest way to give full access; or use dmask=000,fmask=000
-      "windows_names" # Prevents creating files with names Windows doesn't like
+      #"windows_names" # Prevents creating files with names Windows doesn't like
     ];
   };
 }
