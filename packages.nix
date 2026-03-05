@@ -29,6 +29,8 @@
       prusa-slicer
       signal-desktop
       kubectl
+      amdgpu_top
+      htop
     ];
   };
 
