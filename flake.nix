@@ -15,7 +15,7 @@
     };
 
     #hyprland.url = "git+file:///home/kusha/projects/Hyprland";
-    hyprland.url = "github:hyprwm/Hyprland/v0.54.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.54.1";
     #ashell.url = "github:MalpenZibo/ashell";
     ashell.url = "path:/home/kusha/projects/ashell";
     catppuccin.url = "github:catppuccin/nix/release-25.11";

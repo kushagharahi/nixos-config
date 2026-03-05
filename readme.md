@@ -67,10 +67,9 @@ todo:
   - virtual monitor with native resolution
   - prevent screenlock while sunshine has an active connection
 - variablize the config location
+- figure out why dota keep losing audio
 
 maybe:
-- dota needed: `xrandr --output DP-1 --primary` figure out why
-  - also keep losing audio
 
 - convert pi1 pihole to nix
 - convert pi3 mainsail/klipper to nix
