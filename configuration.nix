@@ -114,6 +114,8 @@
   services.gvfs.enable = true; # For mounting USB drives/trash in file manager
   services.udisks2.enable = true; # Mounting other drives
 
+  services.earlyoom.enable = true; # don't let misbehaving services crash stuff
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
