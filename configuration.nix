@@ -110,6 +110,14 @@
   # Enable gnome keyring
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      item = "memlock";
+      type = "-";
+      value = "unlimited";
+    }
+  ];
 
   services.gvfs.enable = true; # For mounting USB drives/trash in file manager
   services.udisks2.enable = true; # Mounting other drives
@@ -165,6 +173,13 @@
     git
     udiskie # automount usb drives
   ];
+
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
