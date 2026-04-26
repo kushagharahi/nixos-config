@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Ensure we are targeting workspace 1
 # Launch amdgpu_top (Top window)

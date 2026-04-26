@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # 1. Setup DP-2 (Portrait) by calling the sub-script
 bash /home/kusha/nixos-config/workspaces/hw-stats-dp-2.sh
