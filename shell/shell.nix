@@ -39,6 +39,18 @@ in {
     '';
   };
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    historyWidgetOptions = [
+      "--sort"
+      "--exact"
+      "--height=40%"
+      "--layout=reverse"
+      "--border"
+    ];
+  };
+
   programs.kitty = {
     enable = true;
     font = {
