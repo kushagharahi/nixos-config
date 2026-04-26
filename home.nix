@@ -8,16 +8,8 @@
 
   imports = [
     ./hyprland/hyprland.nix
+    ./shell/shell.nix
   ];
-
-  programs.bash = {
-    enable = true;
-  };
-
-  home.shellAliases = {
-    "code" = "codium";
-  };
-
   programs.git = {
     enable = true;
     settings = {

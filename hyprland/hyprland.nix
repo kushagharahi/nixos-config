@@ -117,26 +117,6 @@
     };
   };
 
-  programs.kitty = {
-    enable = true;
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 11;
-    };
-    settings = {
-      scrollback_lines = 10000;
-    };
-    extraConfig = ''
-      # Any raw kitty.conf text goes here
-      background_opacity 0.9
-      tab_bar_edge top
-      tab_bar_style powerline
-      tab_powerline_style slanted
-      remember_window_size  yes
-      remember_window_position yes
-    '';
-  };
-
   programs.hyprlock = {
     enable = true;
 
