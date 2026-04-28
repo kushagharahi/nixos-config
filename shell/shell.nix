@@ -12,6 +12,13 @@ in {
     syntaxHighlighting.enable = true;
     enableCompletion = true;
 
+    # Make up and down keys do a substring search
+    historySubstringSearch.enable = true;
+    initExtra = ''
+      bindkey "''${terminfo[kcuu1]}" history-substring-search-up
+      bindkey "''${terminfo[kcud1]}" history-substring-search-down
+    '';
+
     plugins = [
       {
         name = "kubectl";
