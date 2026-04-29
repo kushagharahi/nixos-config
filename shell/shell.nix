@@ -11,13 +11,7 @@ in {
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
-
-    # Make up and down keys do a substring search
     historySubstringSearch.enable = true;
-    initExtra = ''
-      bindkey "''${terminfo[kcuu1]}" history-substring-search-up
-      bindkey "''${terminfo[kcud1]}" history-substring-search-down
-    '';
 
     plugins = [
       {
@@ -28,6 +22,10 @@ in {
     ];
 
     initContent = ''
+      # Make up and down keys do a substring search
+      bindkey "''${terminfo[kcuu1]}" history-substring-search-up
+      bindkey "''${terminfo[kcud1]}" history-substring-search-down
+
       # Add Pure prompt to fpath (Nix store path)
       fpath+=( "${pkgs.pure-prompt}/share/zsh/site-functions" )
 
