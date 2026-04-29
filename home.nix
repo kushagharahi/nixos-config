@@ -9,6 +9,7 @@
   imports = [
     ./hyprland/hyprland.nix
     ./shell/shell.nix
+    ./workspaces/scripts.nix
   ];
   programs.git = {
     enable = true;
