@@ -33,6 +33,10 @@ in {
       autoload -U promptinit; promptinit
       prompt pure
     '';
+
+    shellAliases = {
+      p = "cd ~/projects/";
+    };
   };
 
   programs.fzf = {
