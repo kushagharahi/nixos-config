@@ -62,7 +62,9 @@ in {
       # This opens the scrollback buffer in a searchable overlay
       scrollback_pager = "less +G -R";
       copy_on_select = "yes";
-      mouse_map = "right press ungrabbed paste_from_clipboard";
+      mouse_map = ''
+        right press ungrabbed paste_from_clipboard
+      '';
       # Lower delay = higher frame rate (in milliseconds)
       # 8ms is roughly 120Hz, 6ms is roughly 165Hz
       repaint_delay = 6;

@@ -18,6 +18,10 @@ Build after config change
 ```bash
 sudo nixos-rebuild switch --flake .
 ```
+Add no reexec for faster subsequent builds
+```bash
+sudo nixos-rebuild switch --flake . --no-reexec
+```
 
 Update flake lock
 ```bash
@@ -60,14 +64,12 @@ todo:
 - secret management
 - move to modules?
 - file manager gui
-- fish like autocomplete and syntax highlighting
 - weather widget
 - bump CUPs so printing works again: github.com/nixos/nixpkgs/issues/473491
 - sunshine improvements
   - virtual monitor with native resolution
   - prevent screenlock while sunshine has an active connection
 - variablize the config location
-- figure out why dota keep losing audio
 
 maybe:
 
