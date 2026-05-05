@@ -38,7 +38,6 @@ in {
     enable = true;
     enableZshIntegration = true;
     historyWidgetOptions = [
-      "--sort"
       "--exact"
       "--height=40%"
       "--layout=reverse"
