@@ -58,6 +58,15 @@ in {
     };
     settings = {
       scrollback_lines = 10000;
+      shell = "zsh";
+      # This opens the scrollback buffer in a searchable overlay
+      scrollback_pager = "less +G -R";
+      copy_on_select = "yes";
+      mouse_map = "right click ungrabbed paste_from_clipboard";
+    };
+    keybindings = {
+      "ctrl+f" = "launch --type=overlay --stdin-source=@screen_scrollback /usr/bin/env fzf --no-sort --no-mouse --exact -i";
+      "ctrl+v" = "paste_from_clipboard";
     };
     extraConfig = ''
       # Any raw kitty.conf text goes here
@@ -68,9 +77,6 @@ in {
       remember_window_size  yes
       remember_window_position yes
     '';
-    settings = {
-      shell = "zsh"; # Explicitly tells Kitty to use Zsh
-    };
   };
 
   programs.bash = {
