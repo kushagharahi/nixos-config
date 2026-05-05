@@ -12,6 +12,7 @@ in {
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     historySubstringSearch.enable = true;
+    autocd = true;
 
     plugins = [
       {
