@@ -18,19 +18,27 @@
   home-manager.users.kusha = {
     # This MUST be an attribute set, not just a list
     home.packages = with pkgs; [
-      nixd
-      unzip
-      alejandra
+      # gui
       spotify
       discord
-      gnomeExtensions.wireguard-vpn-extension
       ente-auth
       gimp
       prusa-slicer
       signal-desktop
+
+      # cmd line
       kubectl
       amdgpu_top
       htop
+      unzip
+      yazi # file manager TUI
+
+      # programming
+      nixd # NIX LSP
+      alejandra # NIX Code formatter
+
+      # core (maybe this should be moved)
+      gnomeExtensions.wireguard-vpn-extension
     ];
   };
 

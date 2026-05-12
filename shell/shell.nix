@@ -86,6 +86,15 @@ in {
     '';
   };
 
+  programs.yazi = {
+    enable = true;
+    settings = {
+      manager = {
+        show_hidden = true;
+      };
+    };
+  };
+
   programs.bash = {
     enable = true;
   };
