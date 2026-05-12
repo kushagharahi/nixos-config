@@ -149,6 +149,8 @@
     #media-session.enable = true;
   };
 
+  services.flatpak.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
