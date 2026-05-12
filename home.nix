@@ -11,6 +11,7 @@
     ./shell/shell.nix
     ./workspaces/scripts.nix
   ];
+
   programs.git = {
     enable = true;
     settings = {

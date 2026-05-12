@@ -18,12 +18,15 @@
   home-manager.users.kusha = {
     # This MUST be an attribute set, not just a list
     home.packages = with pkgs; [
-      # gui
-      spotify
-      discord
+      # gui - free
       ente-auth
       gimp
       prusa-slicer
+      vlc
+
+      # gui - non-free
+      spotify
+      discord
       signal-desktop
 
       # cmd line
