@@ -42,6 +42,8 @@
 
       # core (maybe this should be moved)
       gnomeExtensions.wireguard-vpn-extension
+      deepfilternet # noise suppression https://github.com/Rikorose/DeepFilterNet
+      easyeffects # virtual mic setup
     ];
   };
 
