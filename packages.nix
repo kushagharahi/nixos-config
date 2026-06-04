@@ -2,7 +2,16 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  unstable-pkgs =
+    import (fetchTarball {
+      url = "https://github.com/NixOS/nixpkgs/archive/5978570be8393ec3bc10bc4096523f9186587fb5.tar.gz";
+      sha256 = "173ami7yba40pn2cmcc0j6xmbwwlxz82frc31lblclg9a5cidlym";
+    }) {
+      system = pkgs.stdenv.hostPlatform.system;
+      config = {};
+    };
+in {
   # Allow specific unfree packages
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
@@ -23,6 +32,7 @@
       gimp
       prusa-slicer
       vlc
+      remmina
 
       # gui - non-free
       spotify
@@ -42,11 +52,17 @@
 
       # core (maybe this should be moved)
       gnomeExtensions.wireguard-vpn-extension
-      deepfilternet # noise suppression https://github.com/Rikorose/DeepFilterNet
-      easyeffects # virtual mic setup
+      (pkgs.symlinkJoin {
+        name = "easyeffects-with-plugins";
+        paths = [
+          unstable-pkgs.easyeffects # Official modern version (no compiling)
+          unstable-pkgs.x42-plugins # Matching autotune engine
+          pkgs.lsp-plugins # Adds the deep vocoder engine
+          pkgs.mda_lv2 # Adds the classic stompbox-style Talkbox
+        ];
+      })
     ];
   };
-
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
