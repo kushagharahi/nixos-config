@@ -82,7 +82,7 @@
     enable = true;
     # Use the same flake package as configuration.nix
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    extraConfig = builtins.readFile ./hyprland.conf;
+    extraConfig = builtins.readFile ./hyprland.lua;
   };
 
   xdg.configFile."ashell/config.toml".source = ./ashell-config.toml;
@@ -160,7 +160,7 @@
 
   home.packages = with pkgs; [
     # Applications without a Home Manager module
-    inputs.ashell.packages.${pkgs.system}.default # top bar
+    inputs.ashell.packages.${pkgs.stdenv.hostPlatform.system}.default # top bar
     pavucontrol # volume control
     rofi # applauncher
     wl-clipboard # copy paste engine

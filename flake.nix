@@ -2,11 +2,11 @@
   description = "My NixOS Flake Configuration";
 
   inputs = {
-    # This pulls the 25.11 version of Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    # This pulls the 26.05 version of Nixpkgs
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
     # This pulls Home Manager
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     lanzaboote = {
@@ -15,10 +15,12 @@
     };
 
     #hyprland.url = "git+file:///home/kusha/projects/Hyprland";
-    hyprland.url = "github:hyprwm/Hyprland/v0.54.1";
+    hyprland.url = "github:hyprwm/Hyprland/v0.55.0";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
+
     ashell.url = "github:MalpenZibo/ashell/0.8.0";
     #ashell.url = "path:/home/kusha/projects/ashell";
-    catppuccin.url = "github:catppuccin/nix/release-25.11";
+    catppuccin.url = "github:catppuccin/nix/release-26.05";
   };
 
   outputs = {

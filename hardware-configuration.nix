@@ -61,11 +61,12 @@ in {
   # resolve home lab stuff with local DNS
   services.resolved = {
     enable = true;
-    extraConfig = ''
-      [Resolve]
-      DNS=192.168.1.241
-      Domains=kusha.me
-    '';
+    settings = {
+      Resolve = {
+        DNS = "192.168.1.241";
+        Domains = "kusha.me";
+      };
+    };
   };
   # Mount homelab smb
   fileSystems."/mnt/netdisk/home" = {

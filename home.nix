@@ -4,7 +4,7 @@
   ...
 }: {
   # Home Manager needs this to know what version it's managing
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   imports = [
     ./hyprland/hyprland.nix
@@ -26,9 +26,8 @@
     };
   };
 
-  programs.vscode = {
+  programs.vscodium = {
     enable = true;
-    package = pkgs.vscodium.fhs;
 
     # This replaces manually editing settings.json
     profiles.default = {
