@@ -1,7 +1,3 @@
--- =============================================================================
--- ~/.config/hypr/hyprland.lua
--- =============================================================================
-
 -- --- Variables ---
 local mod = "SUPER"
 
@@ -34,7 +30,7 @@ hl.config({
         prefer_hdr = 2,
     },
     cursor = {
-        no_hardware_cursors = true,
+        no_hardware_cursors = false,
     },
     misc = {
         force_default_wallpaper = 0,
