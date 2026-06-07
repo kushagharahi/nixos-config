@@ -15,7 +15,7 @@
     };
 
     #hyprland.url = "git+file:///home/kusha/projects/Hyprland";
-    hyprland.url = "github:hyprwm/Hyprland/v0.55.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.55.2";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
     ashell.url = "github:MalpenZibo/ashell/0.8.0";
