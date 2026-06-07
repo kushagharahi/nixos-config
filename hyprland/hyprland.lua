@@ -22,6 +22,7 @@ hl.config({
     general = {
         -- Order: Top, Right, Bottom, Left
         gaps_out = { 5, 20, 20, 20 },
+        resize_on_border = true
     },
     ecosystem = {
         no_donation_nag = true,
@@ -125,11 +126,10 @@ hl.bind(mod .. " + SHIFT + CTRL + left", hl.dsp.window.move({ monitor = "l" }))
 hl.bind(mod .. " + SHIFT + CTRL + right", hl.dsp.window.move({ monitor = "r" }))
 
 -- Window Resizing (Repeating)
-hl.bind(mod .. " + CTRL + right", hl.dsp.window.resize({ x = 30, y = 0 }), { repeating = true })
-hl.bind(mod .. " + CTRL + left", hl.dsp.window.resize({ x = -30, y = 0 }), { repeating = true })
-hl.bind(mod .. " + CTRL + up", hl.dsp.window.resize({ x = 0, y = -30 }), { repeating = true })
-hl.bind(mod .. " + CTRL + down", hl.dsp.window.resize({ x = 0, y = 30 }), { repeating = true })
-
+hl.bind(mod .. " + CTRL + right", hl.dsp.window.resize({ x = 30, y = 0, relative = true }),  { repeating = true })
+hl.bind(mod .. " + CTRL + left",  hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true })
+hl.bind(mod .. " + CTRL + up",    hl.dsp.window.resize({ x = 0, y = -30, relative = true }), { repeating = true })
+hl.bind(mod .. " + CTRL + down",  hl.dsp.window.resize({ x = 0, y = 30, relative = true }),  { repeating = true })
 -- Toggle Split
 hl.bind(mod .. " + T", hl.dsp.exec_cmd("hyprctl dispatch togglesplit"))
 
