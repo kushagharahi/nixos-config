@@ -34,6 +34,7 @@
       # These extensions will be auto-installed
       extensions = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide # The main Nix support
+        sumneko.lua
       ];
       userSettings = {
         "nix.enableLanguageServer" = true;
