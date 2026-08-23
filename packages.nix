@@ -45,6 +45,7 @@ in {
       htop
       unzip
       yazi # file manager TUI
+      gettext #envsubst
 
       # programming
       nixd # NIX LSP
