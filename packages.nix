@@ -41,6 +41,7 @@ in {
 
       # cmd line
       kubectl
+      kubernetes-helm
       amdgpu_top
       htop
       unzip
