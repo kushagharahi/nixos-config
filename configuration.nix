@@ -160,7 +160,7 @@
   users.users.kusha = {
     isNormalUser = true;
     description = "kusha";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker" "video" "render"];
     packages = with pkgs; [
       #  thunderbird
     ];
@@ -185,6 +185,8 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
+
+  virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
