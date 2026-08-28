@@ -18,7 +18,7 @@
     hyprland.url = "github:hyprwm/Hyprland/v0.55.2";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
-    ashell.url = "github:MalpenZibo/ashell/0.8.0";
+    ashell.url = "github:MalpenZibo/ashell/0.9.0";
     #ashell.url = "path:/home/kusha/projects/ashell";
     catppuccin.url = "github:catppuccin/nix/release-26.05";
   };
