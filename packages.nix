@@ -42,7 +42,7 @@ in {
       # cmd line
       kubectl
       kubernetes-helm
-      amdgpu_top
+      amdgpu_top # TODO - probably move this into HW since it's HW specific.
       htop
       unzip
       yazi # file manager TUI
