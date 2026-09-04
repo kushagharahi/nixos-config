@@ -7,19 +7,7 @@
   pkgs,
   modulesPath,
   ...
-}: let
-  # smb mount opts variable
-  smbOptions = [
-    "credentials=/home/kusha/nixos-config/secrets/netdisk-secret"
-    "uid=1000"
-    "gid=100"
-    "rw"
-    "vers=3.0"
-    "x-systemd.automount" # This makes it "lazy load" like Windows
-    "noauto"
-    "x-systemd.idle-timeout=60" # Unmounts when not in use to save resources
-  ];
-in {
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -54,75 +42,5 @@ in {
     extraPackages32 = with pkgs; [mangohud];
   };
 
-  hardware.bluetooth.enable = true; # enables the bluez service
-  hardware.bluetooth.powerOnBoot = false; # powers up the default controller on boot
-  services.blueman.enable = true; # provides the GUI and tray applet
-
-  # resolve home lab stuff with local DNS
-  services.resolved = {
-    enable = true;
-    settings = {
-      Resolve = {
-        DNS = "192.168.1.241";
-        Domains = "kusha.me";
-      };
-    };
-  };
-  # Mount homelab smb
-  fileSystems."/mnt/netdisk/home" = {
-    device = "//192.168.1.23/home";
-    fsType = "cifs";
-    options = smbOptions;
-  };
-
-  fileSystems."/mnt/netdisk/media" = {
-    device = "//192.168.1.23/Media";
-    fsType = "cifs";
-    options = smbOptions;
-  };
-
-  fileSystems."/mnt/netdisk/docker" = {
-    device = "//192.168.1.23/docker";
-    fsType = "cifs";
-    options = smbOptions;
-  };
-
-  fileSystems."/mnt/netdisk/photos" = {
-    device = "//192.168.1.23/photo-frame";
-    fsType = "cifs";
-    options = smbOptions;
-  };
-
-  # brlaser is the most reliable modern driver for Brother HL-2070N series
-  services.printing.drivers = [pkgs.brlaser];
-
-  hardware.printers = {
-    ensurePrinters = [
-      {
-        name = "Brother_HL-2070N";
-        location = "Local Printer";
-        # Use 'socket' for the most reliable connection
-        deviceUri = "socket://192.168.1.56:9100";
-        model = "drv:///brlaser.drv/br2140.ppd";
-        description = "Brother HL-2070N (Static IP)";
-      }
-    ];
-  };
-
   services.xserver.videoDrivers = ["amdgpu"];
-
-  fileSystems."/mnt/storage" = {
-    device = "/dev/disk/by-uuid/1892489E9248826C";
-    fsType = "ntfs3";
-    options = [
-      "nofail"
-      "uid=1000"
-      "gid=100"
-      "rw"
-      "user"
-      "exec" # Explicitly allow executing binaries (critical for Steam)
-      "umask=000" # Simplest way to give full access; or use dmask=000,fmask=000
-      #"windows_names" # Prevents creating files with names Windows doesn't like
-    ];
-  };
 }
