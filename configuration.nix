@@ -19,8 +19,7 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # Bootloader (Lanzaboote handles the EFI bootloader in modules/lanza.nix)
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Required for virtual input (mouse/keyboard)
@@ -80,18 +79,8 @@
     };
   };
 
-  programs.hyprland = {
-    enable = true;
-    # Use the package from the flake input
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Disable all the core utilities
-  services.gnome.core-apps.enable = false;
 
   services.displayManager.sddm = {
     enable = true;
@@ -105,7 +94,6 @@
   # Enable gnome keyring
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
-  security.pam.services.hyprlock = {};
   security.pam.loginLimits = [
     {
       domain = "*";

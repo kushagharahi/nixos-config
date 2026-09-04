@@ -37,6 +37,7 @@
       specialArgs = {inherit inputs;}; # This passes inputs to your modules
       modules = [
         ./configuration.nix
+        ./modules/hyprland.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
