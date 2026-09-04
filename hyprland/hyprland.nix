@@ -162,7 +162,6 @@
     # Applications without a Home Manager module
     inputs.ashell.packages.${pkgs.stdenv.hostPlatform.system}.default # top bar
     pavucontrol # volume control
-    rofi # applauncher
     wl-clipboard # copy paste engine
     cliphist # clipboard manager
     hyprshot #screenshots
