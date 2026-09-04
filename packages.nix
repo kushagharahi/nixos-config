@@ -1,16 +1,10 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: let
-  unstable-pkgs =
-    import (fetchTarball {
-      url = "https://github.com/NixOS/nixpkgs/archive/5978570be8393ec3bc10bc4096523f9186587fb5.tar.gz";
-      sha256 = "173ami7yba40pn2cmcc0j6xmbwwlxz82frc31lblclg9a5cidlym";
-    }) {
-      system = pkgs.stdenv.hostPlatform.system;
-      config = {};
-    };
+  unstable-pkgs = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   # Allow specific unfree packages
   nixpkgs.config.allowUnfreePredicate = pkg:

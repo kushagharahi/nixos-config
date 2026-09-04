@@ -4,6 +4,7 @@
   inputs = {
     # This pulls the 26.05 version of Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # This pulls Home Manager
     home-manager.url = "github:nix-community/home-manager/release-26.05";
