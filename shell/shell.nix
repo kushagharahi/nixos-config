@@ -72,7 +72,7 @@ in {
       input_delay = 2;
     };
     keybindings = {
-      "ctrl+f" = "launch --type=overlay --stdin-source=@screen_scrollback /usr/bin/env fzf --no-sort --no-mouse --exact -i";
+      "ctrl+f" = "launch --type=overlay --stdin-source=@screen_scrollback ${pkgs.fzf}/bin/fzf --no-sort --no-mouse --exact -i";
       "ctrl+v" = "paste_from_clipboard";
     };
     extraConfig = ''
