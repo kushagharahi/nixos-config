@@ -131,7 +131,7 @@
       general = {
         # Lock before the system actually goes to sleep
         before_sleep_cmd = "loginctl lock-session";
-        after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid dpms issues after wakeup
+        after_sleep_cmd = "hyprctl dispatch 'hl.dsp.dpms({ action = \"enable\" })'"; # to avoid dpms issues after wakeup
         ignore_dbus_inhibit = false; # whether to ignore dbus-sent idle-inhibit requests (used by e.g. firefox or steam)
         lock_cmd = "pidof hyprlock || hyprlock"; # avoid starting multiple hyprlock instances
       };
@@ -143,8 +143,8 @@
         }
         {
           timeout = 330; # 5.5min
-          on-timeout = "hyprctl dispatch dpms off"; # screen off
-          on-resume = "hyprctl dispatch dpms on"; # screen on
+          on-timeout = "hyprctl dispatch 'hl.dsp.dpms({ action = \"disable\" })'"; # screen off
+          on-resume = "hyprctl dispatch 'hl.dsp.dpms({ action = \"enable\" })'"; # screen on
         }
         {
           timeout = 1800; # 30min
