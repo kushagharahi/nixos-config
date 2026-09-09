@@ -27,6 +27,7 @@ in {
       prusa-slicer
       vlc
       remmina
+      runelite
 
       # gui - non-free
       spotify
