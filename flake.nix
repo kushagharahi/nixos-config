@@ -22,6 +22,7 @@
     ashell.url = "github:MalpenZibo/ashell/0.9.0";
     #ashell.url = "path:/home/kusha/projects/ashell";
     catppuccin.url = "github:catppuccin/nix/release-26.05";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.8.0";
   };
 
   outputs = {
@@ -36,6 +37,7 @@
       system = "x86_64-linux";
       specialArgs = {inherit inputs;}; # This passes inputs to your modules
       modules = [
+        inputs.nix-flatpak.nixosModules.nix-flatpak
         ./configuration.nix
         ./modules/hyprland.nix
         home-manager.nixosModules.home-manager
