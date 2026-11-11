@@ -28,6 +28,7 @@ in {
       vlc
       remmina
       runelite
+      vesktop
 
       # gui - non-free
       spotify

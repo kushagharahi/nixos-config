@@ -38,6 +38,7 @@
       specialArgs = {inherit inputs;}; # This passes inputs to your modules
       modules = [
         inputs.nix-flatpak.nixosModules.nix-flatpak
+        ./modules/flatpak.nix
         ./configuration.nix
         ./modules/hyprland.nix
         home-manager.nixosModules.home-manager

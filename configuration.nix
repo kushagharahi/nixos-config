@@ -130,17 +130,6 @@
     #media-session.enable = true;
   };
 
-  services.flatpak = {
-    enable = true;
-    packages = [
-      "org.mozilla.firefox"
-    ];
-    update.auto = {
-      enable = true;
-      onCalendar = "daily";
-    };
-  };
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -156,9 +145,6 @@
     ];
     shell = pkgs.zsh;
   };
-
-  # Native firefox disabled in favor of declarative Flatpak
-  programs.firefox.enable = false;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
